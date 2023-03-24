@@ -1,3 +1,4 @@
+from http.client import HTTPException
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -9,6 +10,8 @@ class Msg(BaseModel):
 
 @app.get("/")
 async def root():
+    print("Printing this line.")
+    raise HTTPException(404,"Raised exception")
     return {"message": "Hello World. Welcome to FastAPI!"}
 
 
